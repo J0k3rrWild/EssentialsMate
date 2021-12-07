@@ -1,0 +1,111 @@
+---
+name: EssentialsMate
+version: 0.0.1
+main: J0k3rrWild\EssentialsMate\Main
+api: 3.26.2
+webiste: https://github.com/J0k3rrWild/
+author: J0k3rrWild
+commands:
+ mute:
+  description: Mutuje gracza w grze
+  permission: essentials.command.mute
+  usage: /mute <player>
+ unmute:
+  description: Odmutowywuje gracza w grze
+  permission: essentials.command.mute
+  usage: /unmute <player>
+ heal:
+  description: Ulecza gracza oraz uzupełnia poziom głodu
+  permission: essentials.command.heal
+  usage: /heal <nick>*
+ getpos:
+  description: Pobiera lokalizacje gracza
+  permission: essentials.command.getpos
+  usage: /getpos <nick>*
+ repair:
+  description: Naprawia przedmiot
+  permission: essentials.command.repair
+  usage: /repair <nick>*
+ vanish:
+  description: Gracz staje sie niewidzialny
+  permission: essentials.command.vanish
+  usage: /vanish <nick>*
+  aliases: [v]
+ god:
+  description: Gracz staje sie nieśmiertelny
+  permission: essentials.command.god
+  usage: /god <player>*
+ fly:
+  description: Gracz dostaje umiejętność latania
+  permission: essentials.command.fly
+  usage: /fly <player>*
+  # Msg and aliases ------------------------
+ msg:
+  description: Wysyła wiadomość do gracza
+  permission: essentials.command.msg
+  usage: /msg <player> <tresc>
+ w:
+  description: Wysyła wiadomość do gracza
+  permission: essentials.command.msg
+  usage: /w <player> <tresc>
+ tell:
+  description: Wysyła wiadomość do gracza
+  permission: essentials.command.msg
+  usage: /tell <player> <tresc>
+  # ----------------------------------------
+
+permissions:
+  essentials.admin:
+    default: op
+    description: Daje wszystkie uprawnienia komend oraz bypass
+  essentials.mute:
+    default: op
+    description: Daje uprawnienia do wyciszania graczy
+  essentials.mute.bypass:
+    default: op
+    description: Uniemożliwia zmutowanie danego gracza z tym uprawnieniem 
+  essentials.msg:
+    default: true
+    description: Komenda do pisania wiadomości prywatnych
+  essentials.msg.force:
+    default: op
+    description: Daje możliwość pisania do gracza który ma wyłączone wiadomości prywatne
+  essentials.heal:
+    default: op
+    description: Daje możliwość uzupełnienia w pełni swojego życia oraz poziomu głodu
+  essentials.heal.other:
+    default: op
+    description: Daje możliwość uzupełnienia w pełni życia oraz poziomu głodu innych graczy
+  essentials.getpos:
+    default: op
+    description: Pokazuje twoje koordynaty
+  essentials.getpos.other:
+    default: op
+    description: Pokazuje koordynaty danego gracza
+  essentials.repair:
+    default: op
+    description: Naprawia item danego gracza który trzyma w ręku
+  essentials.repair.other:
+    default: op
+    description: Naprawia itemy innych graczy który jest trzymany w ręku
+  essentials.vanish:
+    default: op
+    description: Sprawia że gracz jest niewidzialny
+  essentials.vanish.other:
+    default: op
+    description: Sprawia że inny gracz staje sie niewidzialny
+  essentials.god:
+    default: op
+    description: Sprawia że gracz jest nieśmiertelny
+  essentials.god.other:
+    default: op
+    description: Sprawia że inny gracz staje sie nieśmiertelny
+  essentials.fly:
+    default: op
+    description: Sprawia że gracz dostaje umiejętność latania
+  essentials.fly.other:
+    default: op
+    description: Sprawia że inny gracz moze dostać umiejętność latania
+
+...
+
