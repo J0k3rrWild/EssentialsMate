@@ -103,6 +103,8 @@ public $plugin;
              $this->showThis($sender); 
              $new = array_diff($this->plugin->vanished, array($sender->getName())); 
              file_put_contents($cfg, json_encode($new)); 
+             $json = file_get_contents($cfg); 
+             $this->plugin->vanished = json_decode($json, true);
              
              $sender->getLevel()->addSound(new $sound($sender)); 
               
