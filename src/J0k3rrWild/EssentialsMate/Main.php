@@ -32,6 +32,7 @@ use J0k3rrWild\EssentialsMate\Commands\Repair;
 use J0k3rrWild\EssentialsMate\Commands\Vanish;
 use J0k3rrWild\EssentialsMate\Commands\God;
 use J0k3rrWild\EssentialsMate\Commands\Fly;
+use J0k3rrWild\EssentialsMate\Commands\Ban;
 
 class Main extends PluginBase implements Listener{
 
@@ -40,8 +41,8 @@ public $godMode;
 public $vanished;
 public $deco;
 public $msg = array("/msg","/tell", "/w");
-public $unregister = array("tell");
-public $register = array("Msg");
+public $unregister = array("tell", "ban");
+
 
 
     public function onEnable() : void {
@@ -63,6 +64,7 @@ public $register = array("Msg");
         $command->unregister($commandMap);
         }
         $commandMap->register("tell", new Commands\Msg($this));
+        $commandMap->register("ban", new Commands\Ban($this));
     
 
 
@@ -75,8 +77,12 @@ public $register = array("Msg");
         $this->getCommand("vanish")->setExecutor(new Commands\Vanish($this));
         $this->getCommand("god")->setExecutor(new Commands\God($this));
         $this->getCommand("fly")->setExecutor(new Commands\Fly($this));
-        $this->getCommand("tell")->setExecutor(new Commands\Msg($this));
+        $this->getCommand("ban")->setExecutor(new Commands\Ban($this));
         
+        //Msg command alliases
+        $this->getCommand("tell")->setExecutor(new Commands\Msg($this));
+        $this->getCommand("msg")->setExecutor(new Commands\Msg($this));
+        $this->getCommand("w")->setExecutor(new Commands\Msg($this));
         
 
         $this->getLogger()->info(TF::GREEN."[EssentialsMate] > Plugin oraz konfiguracja została załadowana pomyślnie");
