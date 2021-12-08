@@ -24,6 +24,8 @@ public $plugin;
 
   
     public function __construct(Main $main) {
+        parent::__construct("tell", $main, [ "msg", "w"]);
+        $this->setUsage("/tell <player> <tresc>");
         $this->plugin = $main;
     }
 
