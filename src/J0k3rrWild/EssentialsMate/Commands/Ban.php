@@ -70,7 +70,7 @@ public $plugin;
              $target->kick($reason !== "" ? TF::RED."§l[MeetMate] > Zostałeś zbanowany pernamentnie na serwerze. Powód: ". $reason : TF::RED."§l[MeetMate] > Zostałeś zbanowany pernamentnie na serwerze. Powód: Nie określono");
          }
        }else{
-           //brak perm
+         $sender->sendMessage(TF::RED."[MeetMate] > Nie posiadasz uprawnień by móc użyć tej komendy");
        }
       return true;
     }
