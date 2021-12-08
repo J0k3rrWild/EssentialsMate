@@ -5,6 +5,7 @@ main: J0k3rrWild\EssentialsMate\Main
 api: 3.26.2
 webiste: https://github.com/J0k3rrWild/
 author: J0k3rrWild
+load: POSTWORLD
 commands:
  mute:
   description: Mutuje gracza w grze
@@ -38,7 +39,11 @@ commands:
  fly:
   description: Gracz dostaje umiejętność latania
   permission: essentials.command.fly
-  usage: /fly <player>*
+  usage: /fly <player>* 
+ ban:
+  description: Umożliwia banowanie graczy
+  permission: essentials.command.ban
+  usage: /ban <player> <powod>
   # Msg and aliases ------------------------
  msg:
   description: Wysyła wiadomość do gracza
@@ -106,6 +111,16 @@ permissions:
   essentials.fly.other:
     default: op
     description: Sprawia że inny gracz moze dostać umiejętność latania
+  essentials.ban:
+    default: op
+    description: Sprawia że inny gracz moze dostać umiejętność latania
+  essentials.ban.bypass:
+    default: op
+    description: Uniemożliwia zbanowanie danego gracza
+  essentials.logger:
+    default: op
+    description: Loguje graczowi działania administratorskie
+
 
 ...
 
