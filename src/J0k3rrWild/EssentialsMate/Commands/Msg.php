@@ -24,8 +24,9 @@ public $plugin;
 
   
     public function __construct(Main $main) {
-        parent::__construct("tell", $main, [ "msg", "w"]);
+        parent::__construct("tell", $main, ["msg", "w"]);
         $this->setUsage("/tell <player> <tresc>");
+        $this->setDescription("Wysyła wiadomość do gracza");
         $this->plugin = $main;
     }
 
@@ -84,6 +85,8 @@ public $plugin;
            }
            break; 
        }
+    }else{
+        $sender->sendMessage(TF::RED."[MeetMate] > Nie masz uprawnień by użyć tej komendy");
     }
         return true;
     }
