@@ -188,16 +188,6 @@ public $unregister = array("tell", "ban", "unban", "pardon");
         
         }
 
-    public function onJoinFly(PlayerJoinEvent $p){
-        $this->deco = new Config($this->getDataFolder()."players/". strtolower($p->getPlayer()->getName()) . "/player.yaml", Config::YAML);
-        if($this->deco->get("fly", true)){
-            $p->getPlayer()->sendMessage(TF::GREEN."[MeetMate] > Masz aktywowaną funkcje latania ponieważ nie została wyłączona podczas ostatniej sesji");
-            $p->getPlayer()->setFlying(true);
-            $p->getPlayer()->setAllowFlight(true);
-            
-        }
-    
-    }
     
 
     public function onJoinNew(PlayerJoinEvent $p){
@@ -220,5 +210,16 @@ public $unregister = array("tell", "ban", "unban", "pardon");
         
             
     }
+    
+    public function onJoinFly(PlayerJoinEvent $p){
+         $this->deco = new Config($this->getDataFolder()."players/". strtolower($p->getPlayer()->getName()) . "/player.yaml", Config::YAML);
+         if($this->deco->get("fly", true)){
+             $p->getPlayer()->sendMessage(TF::GREEN."[MeetMate] > Masz aktywowaną funkcje latania ponieważ nie została wyłączona podczas ostatniej sesji");
+             $p->getPlayer()->setFlying(true);
+             $p->getPlayer()->setAllowFlight(true);
+             
+         }
+        
+     }
 
 }
