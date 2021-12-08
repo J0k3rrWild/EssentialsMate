@@ -33,6 +33,7 @@ use J0k3rrWild\EssentialsMate\Commands\Vanish;
 use J0k3rrWild\EssentialsMate\Commands\God;
 use J0k3rrWild\EssentialsMate\Commands\Fly;
 use J0k3rrWild\EssentialsMate\Commands\Ban;
+use J0k3rrWild\EssentialsMate\Commands\Unban;
 
 class Main extends PluginBase implements Listener{
 
@@ -41,7 +42,7 @@ public $godMode;
 public $vanished;
 public $deco;
 public $msg = array("/msg","/tell", "/w");
-public $unregister = array("tell", "ban");
+public $unregister = array("tell", "ban", "unban", "pardon");
 
 
 
@@ -65,6 +66,8 @@ public $unregister = array("tell", "ban");
         }
         $commandMap->register("tell", new Commands\Msg($this));
         $commandMap->register("ban", new Commands\Ban($this));
+        $commandMap->register("pardon", new Commands\Unban($this));
+        
     
 
 
@@ -78,6 +81,9 @@ public $unregister = array("tell", "ban");
         $this->getCommand("god")->setExecutor(new Commands\God($this));
         $this->getCommand("fly")->setExecutor(new Commands\Fly($this));
         $this->getCommand("ban")->setExecutor(new Commands\Ban($this));
+        //Unban command alliases
+        $this->getCommand("pardon")->setExecutor(new Commands\Unban($this));
+        $this->getCommand("unban")->setExecutor(new Commands\Unban($this));
         
         //Msg command alliases
         $this->getCommand("tell")->setExecutor(new Commands\Msg($this));
