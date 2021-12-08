@@ -45,7 +45,7 @@ public $plugin;
         $reason = implode(" ", $args);
         $target = $this->plugin->getServer()->getPlayer($name);
 
-        if($target === $sender){
+        if(strtolower($name) === strtolower($sender->getName())){
             $sender->sendMessage(TF::RED."[MeetMate] > Nie możesz zbanować samego siebie!");
             return true;
         }
@@ -60,10 +60,13 @@ public $plugin;
         $sender->sendMessage(TF::GREEN."[MeetMate] > Zbanowano gracza {$name}");
          
         foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
-         if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.notify")){
+         if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
+             if($sender !== $p){
              $p->sendMessage(TF::GRAY."[{$sender->getName()}: Zbanowano gracza {$name} pernamentnie. Powód: {$reason}]");
-         }
+             }
+            }
         }
+        $sender->sendMessage(TF::GREEN."[MeetMate] > Zbanowano gracza {$name} pernamentnie]");
         $this->plugin->getLogger()->info(TF::GRAY."[{$sender->getName()}: Zbanowano gracza {$name} pernamentnie. Powód: {$reason}]");
 
          if($target){
