@@ -40,8 +40,8 @@ public $godMode;
 public $vanished;
 public $deco;
 public $msg = array("/msg","/tell", "/w");
-public $unregister = array("msg", "tell", "w");
-    
+public $unregister = array("tell");
+public $register = array("Msg");
 
 
     public function onEnable() : void {
@@ -54,16 +54,17 @@ public $unregister = array("msg", "tell", "w");
           
 
         
-        
-        
-        // $cmd = $this->getServer()->getCommandMap();
-        // foreach ($this->unregister as $cmdg){
-        // $cmdb = $cmd->getCommand($cmdg);
-        // $cmd->unregister($cmdb);
-        // var_dump($cmdg);
-        // }
-        
-        
+         
+        //Pocketmine command unregister   
+        foreach($this->unregister as $disable){
+        $commandMap = $this->getServer()->getCommandMap();
+        $command = $commandMap->getCommand($disable);
+        $command->setLabel($disable."_disabled");
+        $command->unregister($commandMap);
+        }
+        $commandMap->register("tell", new Commands\Msg($this));
+    
+
 
         //Essentials command register
         $this->getCommand("mute")->setExecutor(new Commands\Mute($this));
@@ -74,10 +75,8 @@ public $unregister = array("msg", "tell", "w");
         $this->getCommand("vanish")->setExecutor(new Commands\Vanish($this));
         $this->getCommand("god")->setExecutor(new Commands\God($this));
         $this->getCommand("fly")->setExecutor(new Commands\Fly($this));
-        //Msg aliases register
-        $this->getCommand("msg")->setExecutor(new Commands\Msg($this));
         $this->getCommand("tell")->setExecutor(new Commands\Msg($this));
-        $this->getCommand("w")->setExecutor(new Commands\Msg($this));
+        
         
 
         $this->getLogger()->info(TF::GREEN."[EssentialsMate] > Plugin oraz konfiguracja została załadowana pomyślnie");
