@@ -42,7 +42,7 @@ public $godMode;
 public $vanished;
 public $deco;
 public $msg = array("/msg","/tell", "/w");
-public $unregister = array("tell", "ban", "unban", "pardon");
+public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm");
 
 
 
@@ -67,9 +67,11 @@ public $unregister = array("tell", "ban", "unban", "pardon");
         $commandMap->register("tell", new Commands\Msg($this));
         $commandMap->register("ban", new Commands\Ban($this));
         $commandMap->register("pardon", new Commands\Unban($this));
+        $commandMap->register("gamemode", new Commands\Gamemode($this));
+    
         
     
-
+// ---------------------------------------------------------------------------------------
 
         //Essentials command register
         $this->getCommand("mute")->setExecutor(new Commands\Mute($this));
@@ -81,15 +83,25 @@ public $unregister = array("tell", "ban", "unban", "pardon");
         $this->getCommand("god")->setExecutor(new Commands\God($this));
         $this->getCommand("fly")->setExecutor(new Commands\Fly($this));
         $this->getCommand("ban")->setExecutor(new Commands\Ban($this));
-        //Unban command alliases
+
+        //Gamemode command alliases & register
+        $this->getCommand("gamemode")->setExecutor(new Commands\Gamemode($this));
+        $this->getCommand("gmc")->setExecutor(new Commands\Gamemode($this));
+        $this->getCommand("gma")->setExecutor(new Commands\Gamemode($this));
+        $this->getCommand("gms")->setExecutor(new Commands\Gamemode($this));
+        
+
+        //Unban command alliases & register
         $this->getCommand("pardon")->setExecutor(new Commands\Unban($this));
         $this->getCommand("unban")->setExecutor(new Commands\Unban($this));
         
-        //Msg command alliases
+        //Msg command alliases & register
         $this->getCommand("tell")->setExecutor(new Commands\Msg($this));
         $this->getCommand("msg")->setExecutor(new Commands\Msg($this));
         $this->getCommand("w")->setExecutor(new Commands\Msg($this));
         
+// --------------------------------------------------------------------------------------
+
 
         $this->getLogger()->info(TF::GREEN."[EssentialsMate] > Plugin oraz konfiguracja została załadowana pomyślnie");
     }
@@ -196,7 +208,7 @@ public $unregister = array("tell", "ban", "unban", "pardon");
 
             @mkdir($this->getDataFolder()."players/".strtolower($p->getPlayer()->getName()));
             $playerData = fopen($this->getDataFolder()."players/".strtolower($p->getPlayer()->getName())."/player.yaml", "w");
-            $data = "muted: false\nfreezed: false\npriv-disabled: false\ngodmode: false\nfly: false\n";
+            $data = "muted: false\nfreezed: false\npriv-disabled: false\ngodmode: false\nfly: false\ngamemode: survival";
             fwrite($playerData, $data);
             fclose($playerData);
             $this->deco = new Config($this->getDataFolder()."players/". strtolower($p->getPlayer()->getName()) . "/player.yaml", Config::YAML);
