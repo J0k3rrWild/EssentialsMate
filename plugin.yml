@@ -44,6 +44,27 @@ commands:
   description: Umożliwia banowanie graczy
   permission: essentials.command.ban
   usage: /ban <player> <powod> 
+#Gamemode and aliases ------------------------ 
+ gamemode:
+  description: Zmienia gamemode gracza
+  permission: essentials.command.gamemode
+  usage: /gamemode <tryb> <gracz>*
+ gm:
+  description: Zmienia gamemode gracza
+  permission: essentials.command.gamemode
+  usage: /gamemode <tryb> <gracz>*
+ gmc:
+  description: Zmienia gamemode gracza na creative
+  permission: essentials.command.gamemode
+  usage: /gmc <player>*
+ gms:
+  description: Zmienia gamemode gracza na spectator
+  permission: essentials.command.gamemode
+  usage: /gms <player>*
+ gma:
+  description: Zmienia gamemode gracza na survival
+  permission: essentials.command.gamemode
+  usage: /gma <player>*
 #Unban and aliases ------------------------ 
  pardon:
   description: Umożliwia odbanowanie graczy
