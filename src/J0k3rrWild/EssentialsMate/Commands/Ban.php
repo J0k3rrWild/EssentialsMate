@@ -49,16 +49,13 @@ public $plugin;
             $sender->sendMessage(TF::RED."[MeetMate] > Nie możesz zbanować samego siebie!");
             return true;
         }
-
-        if(($target->hasPermission("essentials.ban.bypass") && $sender instanceof Player) || ($target->hasPermission("essentials.admin") && $sender instanceof Player)){
-            $sender->sendMessage(TF::RED."[MeetMate] > Nie możesz zbanować tego użytkownika! Użyj komendy w konsoli");
-            return true;
+        if($target){
+            if(($target->hasPermission("essentials.ban.bypass") && $sender instanceof Player) || ($target->hasPermission("essentials.admin") && $sender instanceof Player)){
+                $sender->sendMessage(TF::RED."[MeetMate] > Nie możesz zbanować tego użytkownika! Użyj komendy w konsoli");
+                return true;
+            }
         }
-        
 
-        $sender->getServer()->getNameBans()->addBan($name, $reason, null, $sender->getName());
-        $sender->sendMessage(TF::GREEN."[MeetMate] > Zbanowano gracza {$name}");
-         
         foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
          if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
              if($sender !== $p){
@@ -66,11 +63,12 @@ public $plugin;
              }
             }
         }
+        $sender->getServer()->getNameBans()->addBan($name, $reason, null, $sender->getName());
         $sender->sendMessage(TF::GREEN."[MeetMate] > Zbanowano gracza {$name} pernamentnie]");
         $this->plugin->getLogger()->info(TF::GRAY."[{$sender->getName()}: Zbanowano gracza {$name} pernamentnie. Powód: {$reason}]");
 
          if($target){
-             $target->kick($reason !== "" ? TF::RED."§l[MeetMate] > Zostałeś zbanowany pernamentnie na serwerze. Powód: ". $reason : TF::RED."§l[MeetMate] > Zostałeś zbanowany pernamentnie na serwerze. Powód: Nie określono");
+             $target->kick($reason !== "" ? TF::RED."§l[MeetMate] > Zostałeś zbanowany pernamentnie na serwerze. Powód: ". $reason : TF::RED."§l[MeetMate] > Zostałeś zbanowany pernamentnie na serwerze. Powód: Nie określono", false);
          }
        }else{
          $sender->sendMessage(TF::RED."[MeetMate] > Nie posiadasz uprawnień by móc użyć tej komendy");
