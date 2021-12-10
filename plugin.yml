@@ -44,6 +44,14 @@ commands:
   description: Umożliwia banowanie graczy
   permission: essentials.command.ban
   usage: /ban <player> <powod> 
+ op:
+  description: Umożliwia nadanie operatora
+  permission: essentials.command.op
+  usage: /ban <player> <powod> 
+ deop:
+  description: Umożliwia odebranie operatora
+  permission: essentials.command.op
+  usage: /ban <player> <powod>  
 #Gamemode and aliases ------------------------ 
  gamemode:
   description: Zmienia gamemode gracza
@@ -68,12 +76,12 @@ commands:
 #Unban and aliases ------------------------ 
  pardon:
   description: Umożliwia odbanowanie graczy
-  permission: essentials.command.unban
+  permission: essentials.command.ban
   usage: /unban <player> || /pardon <player>
   aliases: ["unban"]
  unban:
   description: Umożliwia odbanowanie graczy
-  permission: essentials.command.unban
+  permission: essentials.command.ban
   usage: /unban <player> || /pardon <player>
   aliases: ["pardon"]
 # Msg and aliases ------------------------
