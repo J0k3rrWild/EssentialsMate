@@ -47,11 +47,15 @@ commands:
  op:
   description: Umożliwia nadanie operatora
   permission: essentials.command.op
-  usage: /ban <player> <powod> 
+  usage: /deop
  deop:
   description: Umożliwia odebranie operatora
   permission: essentials.command.op
-  usage: /ban <player> <powod>  
+  usage: /deop 
+ kick:
+  description: Wyrzuca gracza z serwera
+  permission: essentials.command.kick
+  usage: /kick <player> <powod> 
 #Gamemode and aliases ------------------------ 
  gamemode:
   description: Zmienia gamemode gracza
@@ -157,6 +161,12 @@ permissions:
   essentials.ban.bypass:
     default: op
     description: Uniemożliwia zbanowanie danego gracza
+  essentials.kick:
+    default: op
+    description: Umożliwa wyrzucenie gracza z serwera
+  essentials.kick.bypass:
+    default: op
+    description: Uniemożliwia wyrzucenie danego gracza
   essentials.logger:
     default: op
     description: Loguje graczowi działania administratorskie
