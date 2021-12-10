@@ -45,7 +45,7 @@ public $godMode;
 public $vanished;
 public $deco;
 public $msg = array("/msg","/tell", "/w");
-public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "op", "deop");
+public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "op", "deop", "kick");
 
 
 
@@ -55,7 +55,7 @@ public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "
         @mkdir($this->getDataFolder());
         @mkdir($this->getDataFolder()."players/");
         $this->saveResource("vanished.json"); 
-        $this->saveResource("goded.json"); 
+ 
           
 
         
@@ -73,6 +73,7 @@ public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "
         $commandMap->register("gamemode", new Commands\Gamemode($this));
         $commandMap->register("op", new Commands\Op($this));
         $commandMap->register("deop", new Commands\Deop($this));
+        $commandMap->register("kick", new Commands\Kick($this));
     
         
     
@@ -90,6 +91,7 @@ public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "
         $this->getCommand("ban")->setExecutor(new Commands\Ban($this));
         $this->getCommand("op")->setExecutor(new Commands\Op($this));
         $this->getCommand("deop")->setExecutor(new Commands\Deop($this));
+        $this->getCommand("kick")->setExecutor(new Commands\Kick($this));
 
         //Gamemode command alliases & register
         $this->getCommand("gamemode")->setExecutor(new Commands\Gamemode($this));
