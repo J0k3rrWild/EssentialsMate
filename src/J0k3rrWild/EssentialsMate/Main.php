@@ -34,6 +34,9 @@ use J0k3rrWild\EssentialsMate\Commands\God;
 use J0k3rrWild\EssentialsMate\Commands\Fly;
 use J0k3rrWild\EssentialsMate\Commands\Ban;
 use J0k3rrWild\EssentialsMate\Commands\Unban;
+use J0k3rrWild\EssentialsMate\Commands\Gamemode;
+use J0k3rrWild\EssentialsMate\Commands\Op;
+use J0k3rrWild\EssentialsMate\Commands\Deop;
 
 class Main extends PluginBase implements Listener{
 
@@ -42,7 +45,7 @@ public $godMode;
 public $vanished;
 public $deco;
 public $msg = array("/msg","/tell", "/w");
-public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm");
+public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "op", "deop");
 
 
 
@@ -68,6 +71,8 @@ public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm");
         $commandMap->register("ban", new Commands\Ban($this));
         $commandMap->register("pardon", new Commands\Unban($this));
         $commandMap->register("gamemode", new Commands\Gamemode($this));
+        $commandMap->register("op", new Commands\Op($this));
+        $commandMap->register("deop", new Commands\Deop($this));
     
         
     
@@ -83,6 +88,8 @@ public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm");
         $this->getCommand("god")->setExecutor(new Commands\God($this));
         $this->getCommand("fly")->setExecutor(new Commands\Fly($this));
         $this->getCommand("ban")->setExecutor(new Commands\Ban($this));
+        $this->getCommand("op")->setExecutor(new Commands\Op($this));
+        $this->getCommand("deop")->setExecutor(new Commands\Deop($this));
 
         //Gamemode command alliases & register
         $this->getCommand("gamemode")->setExecutor(new Commands\Gamemode($this));
