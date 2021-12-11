@@ -47,9 +47,9 @@ public $plugin;
 
          //fly script
 
-         $sender->sendMessage(TF::GREEN." [MeetMate] > Aktywowano umiejętność latania");
+         $sender->sendMessage(TF::GREEN."[MeetMate] > Aktywowano umiejętność latania");
         }else{
-            $sender->sendMessage(TF::RED." [MeetMate] > Już masz aktywowaną umiejętność latania!");
+            $sender->sendMessage(TF::RED."[MeetMate] > Już masz aktywowaną umiejętność latania!");
         }
       }else{
         $sender->sendMessage(TF::RED."[MeetMate] > Nie posiadasz uprawnień by móc użyć tej komendy"); 
@@ -68,9 +68,9 @@ public $plugin;
                     $this->plugin->deco->save();
                     $sender->setFlying(false);
                     $sender->setAllowFlight(false);
-                    $sender->sendMessage(TF::GREEN." [MeetMate] > Dektywowano umiejętność latania");
+                    $sender->sendMessage(TF::GREEN."[MeetMate] > Dektywowano umiejętność latania");
                 }else{
-                    $sender->sendMessage(TF::RED." [MeetMate] > Nie masz aktywowanej umiejętności latania!");
+                    $sender->sendMessage(TF::RED."[MeetMate] > Nie masz aktywowanej umiejętności latania!");
                 }
             
         }else{
@@ -88,13 +88,13 @@ public $plugin;
                     $this->plugin->deco->save();
                     $target->setFlying(false);
                     $target->setAllowFlight(false);
-                    $sender->sendMessage(TF::GREEN." [MeetMate] > Umięjętność latania dla gracza ".$args[1]." została dezaktywowana");
-                    $target->sendMessage(TF::GREEN." [MeetMate] > Dektywowano umiejętność latania");
+                    $sender->sendMessage(TF::GREEN."[MeetMate] > Umięjętność latania dla gracza ".$args[1]." została dezaktywowana");
+                    $target->sendMessage(TF::GREEN."[MeetMate] > Dektywowano umiejętność latania");
                 }else{
-                    $sender->sendMessage(TF::RED." [MeetMate] > Gracz ".$args[1]." już ma dezaktywowaną umiejętność latania");
+                    $sender->sendMessage(TF::RED."[MeetMate] > Gracz ".$args[1]." już ma dezaktywowaną umiejętność latania");
                 }
             }else{
-                $sender->sendMessage(TF::RED." [MeetMate] > Gracza nie ma na serwerze lub nick jest niepoprawny");  
+                $sender->sendMessage(TF::RED."[MeetMate] > Gracza nie ma na serwerze lub nick jest niepoprawny");  
             }
            }else{
             if($args[0] !== "off"){
@@ -106,13 +106,13 @@ public $plugin;
                         $target->setFlying(true);
                         $target->setAllowFlight(true);
 
-                        $sender->sendMessage(TF::GREEN." [MeetMate] > Umięjętność latania dla gracza ".$args[0]." została aktywowana");
-                        $target->sendMessage(TF::GREEN." [MeetMate] > Aktywowano umiejętność latania");
+                        $sender->sendMessage(TF::GREEN."[MeetMate] > Umięjętność latania dla gracza ".$args[0]." została aktywowana");
+                        $target->sendMessage(TF::GREEN."[MeetMate] > Aktywowano umiejętność latania");
                     }else{
-                        $sender->sendMessage(TF::RED." [MeetMate] > Gracz ".$args[0]." już ma aktywowaną umiejętność latania");
+                        $sender->sendMessage(TF::RED."[MeetMate] > Gracz ".$args[0]." już ma aktywowaną umiejętność latania");
                     }
                 }else{
-                    $sender->sendMessage(TF::RED." [MeetMate] > Gracza nie ma na serwerze lub nick jest niepoprawny");  
+                    $sender->sendMessage(TF::RED."[MeetMate] > Gracza nie ma na serwerze lub nick jest niepoprawny");  
                 }
             }
            }   

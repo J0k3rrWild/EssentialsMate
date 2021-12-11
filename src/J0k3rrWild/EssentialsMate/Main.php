@@ -55,7 +55,9 @@ public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "
         @mkdir($this->getDataFolder());
         @mkdir($this->getDataFolder()."players/");
         $this->saveResource("vanished.json"); 
- 
+        $cfg = $this->getDataFolder() . 'vanished.json';
+        $json = file_get_contents($cfg);
+        $this->vanished = json_decode($json, true);
           
 
         

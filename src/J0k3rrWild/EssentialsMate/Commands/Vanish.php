@@ -144,19 +144,23 @@ public $plugin;
          if($args[0] !== "off"){ 
            if($sender->hasPermission("essentials.vanish.other") || $sender->hasPermission("essentials.admin")){   
             $target = $this->plugin->getServer()->getPlayer($args[0]); 
-            if(!in_array($target->getName(), $this->plugin->vanished)){ 
-                $this->hideThis($target); 
-                array_push($this->plugin->vanished, $target->getName()); 
-                file_put_contents($cfg, json_encode($this->plugin->vanished)); 
-                $json = file_get_contents($cfg); 
-                $this->plugin->vanished = json_decode($json, true); 
-                $this->hideThis($target); 
-                $target->getLevel()->addSound(new $sound($target)); 
-                $target->sendMessage(TF::GREEN."[MeetMate] > Stałeś się niewidzialny dla innych graczy");   
-                $sender->sendMessage(TF::GREEN."[MeetMate] > Gracz ".$args[0]." stał się niewidzialny");   
-            }else{ 
-                $sender->sendMessage(TF::RED."[MeetMate] > Gracz ".$args[0]." jest już niewidzialny!"); 
-            } 
+            if($target){
+              if(!in_array($target->getName(), $this->plugin->vanished)){ 
+                  $this->hideThis($target); 
+                  array_push($this->plugin->vanished, $target->getName()); 
+                  file_put_contents($cfg, json_encode($this->plugin->vanished)); 
+                  $json = file_get_contents($cfg); 
+                  $this->plugin->vanished = json_decode($json, true); 
+                  $this->hideThis($target); 
+                  $target->getLevel()->addSound(new $sound($target)); 
+                  $target->sendMessage(TF::GREEN."[MeetMate] > Stałeś się niewidzialny dla innych graczy");   
+                  $sender->sendMessage(TF::GREEN."[MeetMate] > Gracz ".$args[0]." stał się niewidzialny");   
+              }else{ 
+                  $sender->sendMessage(TF::RED."[MeetMate] > Gracz ".$args[0]." jest już niewidzialny!"); 
+              } 
+            }else{
+              $sender->sendMessage(TF::RED."[MeetMate] > Gracz ".$args[0]." jest offline bądz niepoprawny nick");
+            }
            }else{ 
             $sender->sendMessage(TF::RED."[MeetMate] > Nie posiadasz uprawnień by móc użyć tej komendy"); 
             return true; 
