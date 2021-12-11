@@ -62,6 +62,10 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
       if($sender->hasPermission("essentials.admin") || $sender->hasPermission("essentials.gamemode")){
           $sender->setGamemode(Player::SURVIVAL);
           $sender->sendMessage(TF::GREEN."[MeetMate] > Zmieniłeś swój gamemode na: survival");
+
+          $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($sender->getPlayer()->getName()) . "/player.yaml", Config::YAML);
+          $this->plugin->deco->set("gamemode", "survival");
+          $this->plugin->deco->save();
          foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
           if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
             if($sender !== $p){
@@ -79,6 +83,9 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
         $target->setGamemode(Player::SURVIVAL);
         $sender->sendMessage(TF::GREEN."[MeetMate] > Zmieniłeś gamemode gracza ".$args[0]." na: survival");
         $target->sendMessage(TF::GREEN."[MeetMate] > Zmieniono twój gamemode na: survival");
+        $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($target->getPlayer()->getName()) . "/player.yaml", Config::YAML);
+        $this->plugin->deco->set("gamemode", "survival");
+        $this->plugin->deco->save();
         foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
             if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
               if($sender !== $p){
@@ -98,7 +105,9 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
       if($sender->hasPermission("essentials.admin") || $sender->hasPermission("essentials.gamemode")){
           $sender->setGamemode(Player::SURVIVAL);
           $sender->sendMessage(TF::GREEN."[MeetMate] > Zmieniłeś swój gamemode na: survival");
-
+          $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($sender->getPlayer()->getName()) . "/player.yaml", Config::YAML);
+          $this->plugin->deco->set("gamemode", "survival");
+          $this->plugin->deco->save();
           foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
             if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
               if($sender !== $p){
@@ -119,6 +128,10 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
          $target->setGamemode(Player::SURVIVAL);
          $sender->sendMessage(TF::GREEN."[MeetMate] > Zmieniłeś gamemode gracza ".$args[1]." na: survival");
          $target->sendMessage(TF::GREEN."[MeetMate] > Zmieniono twój gamemode na: survival");
+         $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($target->getPlayer()->getName()) . "/player.yaml", Config::YAML);
+          $this->plugin->deco->set("gamemode", "survival");
+          $this->plugin->deco->save();
+          
            foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
              if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
                if($sender !== $p){
@@ -139,7 +152,9 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
       if($sender->hasPermission("essentials.admin") || $sender->hasPermission("essentials.gamemode")){
           $sender->setGamemode(Player::CREATIVE);
           $sender->sendMessage(TF::GREEN."[MeetMate] > Zmieniłeś swój gamemode na: creative");
-
+          $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($sender->getPlayer()->getName()) . "/player.yaml", Config::YAML);
+          $this->plugin->deco->set("gamemode", "creative");
+          $this->plugin->deco->save();
           foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
             if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
               if($sender !== $p){
@@ -157,6 +172,9 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
         $target->setGamemode(Player::CREATIVE);
         $sender->sendMessage(TF::GREEN."[MeetMate] > Zmieniłeś gamemode gracza ".$args[0]." na: creative");
         $target->sendMessage(TF::GREEN."[MeetMate] > Zmieniono twój gamemode na: creative");
+        $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($target->getPlayer()->getName()) . "/player.yaml", Config::YAML);
+        $this->plugin->deco->set("gamemode", "creative");
+        $this->plugin->deco->save();
         foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
             if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
               if($sender !== $p){
@@ -176,7 +194,9 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
       if($sender->hasPermission("essentials.admin") || $sender->hasPermission("essentials.gamemode")){
           $sender->setGamemode(Player::CREATIVE);
           $sender->sendMessage(TF::GREEN."[MeetMate] > Zmieniłeś swój gamemode na: creative");
-
+          $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($sender->getPlayer()->getName()) . "/player.yaml", Config::YAML);
+          $this->plugin->deco->set("gamemode", "creative");
+          $this->plugin->deco->save();
           foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
             if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
               if($sender !== $p){
@@ -197,6 +217,9 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
          $target->setGamemode(Player::CREATIVE);
          $sender->sendMessage(TF::GREEN."[MeetMate] > Zmieniłeś gamemode gracza ".$args[1]." na: creative");
          $target->sendMessage(TF::GREEN."[MeetMate] > Zmieniono twój gamemode na: creative");
+         $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($target->getPlayer()->getName()) . "/player.yaml", Config::YAML);
+         $this->plugin->deco->set("gamemode", "creative");
+         $this->plugin->deco->save();
            foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
              if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
                if($sender !== $p){
@@ -217,6 +240,9 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
       if($sender->hasPermission("essentials.admin") || $sender->hasPermission("essentials.gamemode")){
         $sender->setGamemode(Player::SPECTATOR);
         $sender->sendMessage(TF::GREEN."[MeetMate] > Zmieniłeś swój gamemode na: spectator");
+        $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($sender->getPlayer()->getName()) . "/player.yaml", Config::YAML);
+        $this->plugin->deco->set("gamemode", "spectator");
+        $this->plugin->deco->save();
         foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
             if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
               if($sender !== $p){
@@ -236,6 +262,9 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
           $target->setGamemode(Player::SPECTATOR);
           $sender->sendMessage(TF::GREEN."[MeetMate] > Zmieniłeś gamemode gracza ".$args[0]." na: spectator");
           $target->sendMessage(TF::GREEN."[MeetMate] > Zmieniono twój gamemode na: spectator");
+          $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($target->getPlayer()->getName()) . "/player.yaml", Config::YAML);
+          $this->plugin->deco->set("gamemode", "spectator");
+          $this->plugin->deco->save();
           foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
               if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
                 if($sender !== $p){
@@ -257,7 +286,9 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
       if($sender->hasPermission("essentials.admin") || $sender->hasPermission("essentials.gamemode")){
           $sender->setGamemode(Player::SPECTATOR);
           $sender->sendMessage(TF::GREEN."[MeetMate] > Zmieniłeś swój gamemode na: spectator");
-
+          $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($sender->getPlayer()->getName()) . "/player.yaml", Config::YAML);
+          $this->plugin->deco->set("gamemode", "spectator");
+          $this->plugin->deco->save();
           foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
             if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
               if($sender !== $p){
@@ -277,6 +308,9 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
         $target->setGamemode(Player::SPECTATOR);
         $sender->sendMessage(TF::GREEN."[MeetMate] > Zmieniłeś gamemode gracza ".$args[1]." na: spectator");
         $target->sendMessage(TF::GREEN."[MeetMate] > Zmieniono twój gamemode na: spectator");
+        $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($target->getPlayer()->getName()) . "/player.yaml", Config::YAML);
+        $this->plugin->deco->set("gamemode", "spectator");
+        $this->plugin->deco->save();
           foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
             if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
               if($sender !== $p){
