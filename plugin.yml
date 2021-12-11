@@ -56,6 +56,10 @@ commands:
   description: Wyrzuca gracza z serwera
   permission: essentials.command.kick
   usage: /kick <player> <powod> 
+ adminfo:
+  description: Wyświetla informacje administratorskie
+  permission: essentials.command.adminfo
+  usage: /adminfo <gracz>
 #Gamemode and aliases ------------------------ 
  gamemode:
   description: Zmienia gamemode gracza
@@ -77,10 +81,6 @@ commands:
   description: Zmienia gamemode gracza na survival
   permission: essentials.command.gamemode
   usage: /gma <player>*
- adminfo:
-  description: Wyświetla informacje administratorskie
-  permission: essentials.command.adminfo
-  usage: /adminfo <gracz>
 #Unban and aliases ------------------------ 
  pardon:
   description: Umożliwia odbanowanie graczy
@@ -176,7 +176,7 @@ permissions:
     description: Loguje graczowi działania administratorskie
   essentials.adminfo:
     default: op
-    description: Loguje graczowi działania administratorskie
+    description: Wyświetla informacje administratorskie
 
 ...
 
