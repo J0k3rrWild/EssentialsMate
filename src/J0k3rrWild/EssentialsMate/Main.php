@@ -92,6 +92,7 @@ public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "
         $this->getCommand("op")->setExecutor(new Commands\Op($this));
         $this->getCommand("deop")->setExecutor(new Commands\Deop($this));
         $this->getCommand("kick")->setExecutor(new Commands\Kick($this));
+        $this->getCommand("adminfo")->setExecutor(new Commands\Adminfo($this));
 
         //Gamemode command alliases & register
         $this->getCommand("gamemode")->setExecutor(new Commands\Gamemode($this));
