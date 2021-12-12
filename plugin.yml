@@ -60,6 +60,14 @@ commands:
   description: Wyświetla informacje administratorskie
   permission: essentials.command.adminfo
   usage: /adminfo <gracz>
+ spawn:
+  description: Teleportuje na spawn
+  permission: essentials.command.spawn
+  usage: /spawn <player> 
+ setspawn:
+  description: Ustawia spawn główny
+  permission: essentials.command.setspawn
+  usage: /setspawn
 #Gamemode and aliases ------------------------ 
  gamemode:
   description: Zmienia gamemode gracza
@@ -177,6 +185,9 @@ permissions:
   essentials.adminfo:
     default: op
     description: Wyświetla informacje administratorskie
+  essentials.setspawn:
+    default: op
+    description: Ustawia spawn główny
 
 ...
 
