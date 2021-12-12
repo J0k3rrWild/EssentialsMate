@@ -37,11 +37,12 @@ use J0k3rrWild\EssentialsMate\Commands\Unban;
 use J0k3rrWild\EssentialsMate\Commands\Gamemode;
 use J0k3rrWild\EssentialsMate\Commands\Op;
 use J0k3rrWild\EssentialsMate\Commands\Deop;
+use J0k3rrWild\EssentialsMate\Commands\Kick;
+use J0k3rrWild\EssentialsMate\Commands\Spawn;
 
 class Main extends PluginBase implements Listener{
 
-
-public $godMode;
+public $spawn;
 public $vanished;
 public $deco;
 public $msg = array("/msg","/tell", "/w");
@@ -55,6 +56,7 @@ public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "
         @mkdir($this->getDataFolder());
         @mkdir($this->getDataFolder()."players/");
         $this->saveResource("vanished.json"); 
+        $this->saveResource("spawn.yaml"); 
         $cfg = $this->getDataFolder() . 'vanished.json';
         $json = file_get_contents($cfg);
         $this->vanished = json_decode($json, true);
@@ -95,6 +97,8 @@ public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "
         $this->getCommand("deop")->setExecutor(new Commands\Deop($this));
         $this->getCommand("kick")->setExecutor(new Commands\Kick($this));
         $this->getCommand("adminfo")->setExecutor(new Commands\Adminfo($this));
+        $this->getCommand("spawn")->setExecutor(new Commands\Spawn($this));
+        $this->getCommand("setspawn")->setExecutor(new Commands\Spawn($this));
 
         //Gamemode command alliases & register
         $this->getCommand("gamemode")->setExecutor(new Commands\Gamemode($this));
