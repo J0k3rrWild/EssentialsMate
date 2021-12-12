@@ -54,8 +54,7 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
             return true;
            }
       }
-
-
+      
     
     // -----------------------------------[SURVIVAL]-----------------------------------------------------------------
     if(($cmd->getName() === "gma") && !isset($args[0])){
@@ -66,6 +65,7 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
           $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($sender->getPlayer()->getName()) . "/player.yaml", Config::YAML);
           $this->plugin->deco->set("gamemode", "survival");
           $this->plugin->deco->save();
+
          foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
           if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
             if($sender !== $p){
@@ -86,6 +86,7 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
         $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($target->getPlayer()->getName()) . "/player.yaml", Config::YAML);
         $this->plugin->deco->set("gamemode", "survival");
         $this->plugin->deco->save();
+
         foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
             if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
               if($sender !== $p){
@@ -108,6 +109,7 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
           $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($sender->getPlayer()->getName()) . "/player.yaml", Config::YAML);
           $this->plugin->deco->set("gamemode", "survival");
           $this->plugin->deco->save();
+
           foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
             if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
               if($sender !== $p){
@@ -155,6 +157,12 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
           $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($sender->getPlayer()->getName()) . "/player.yaml", Config::YAML);
           $this->plugin->deco->set("gamemode", "creative");
           $this->plugin->deco->save();
+
+          $cfgs = new Config($this->plugin->getDataFolder()."players/". strtolower($sender->getName()) . "/player.yaml", Config::YAML);
+          $cfgs->set("fly", false);
+          $cfgs->set("godmode", false);
+          $cfgs->save();
+
           foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
             if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
               if($sender !== $p){
@@ -175,6 +183,14 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
         $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($target->getPlayer()->getName()) . "/player.yaml", Config::YAML);
         $this->plugin->deco->set("gamemode", "creative");
         $this->plugin->deco->save();
+        
+        $target = $this->plugin->getServer()->getPlayer($args[0]);
+        $cfgt = new Config($this->plugin->getDataFolder()."players/". strtolower($target->getPlayer()->getName()) . "/player.yaml", Config::YAML);
+
+        $cfgt->set("fly", false);
+        $cfgt->set("godmode", false);
+        $cfgt->save(); 
+
         foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
             if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
               if($sender !== $p){
@@ -197,6 +213,12 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
           $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($sender->getPlayer()->getName()) . "/player.yaml", Config::YAML);
           $this->plugin->deco->set("gamemode", "creative");
           $this->plugin->deco->save();
+
+          $cfgs = new Config($this->plugin->getDataFolder()."players/". strtolower($sender->getName()) . "/player.yaml", Config::YAML);
+          $cfgs->set("fly", false);
+          $cfgs->set("godmode", false);
+          $cfgs->save();
+
           foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
             if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
               if($sender !== $p){
@@ -220,6 +242,13 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
          $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($target->getPlayer()->getName()) . "/player.yaml", Config::YAML);
          $this->plugin->deco->set("gamemode", "creative");
          $this->plugin->deco->save();
+         
+         $target = $this->plugin->getServer()->getPlayer($args[0]);
+         $cfgt = new Config($this->plugin->getDataFolder()."players/". strtolower($target->getPlayer()->getName()) . "/player.yaml", Config::YAML);
+         $cfgt->set("fly", false);
+         $cfgt->set("godmode", false);
+         $cfgt->save();
+
            foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
              if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
                if($sender !== $p){
@@ -243,6 +272,11 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
         $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($sender->getPlayer()->getName()) . "/player.yaml", Config::YAML);
         $this->plugin->deco->set("gamemode", "spectator");
         $this->plugin->deco->save();
+        $cfgs = new Config($this->plugin->getDataFolder()."players/". strtolower($sender->getName()) . "/player.yaml", Config::YAML);
+        $cfgs->set("fly", false);
+        $cfgs->set("godmode", false);
+        $cfgs->save();
+
         foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
             if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
               if($sender !== $p){
@@ -265,6 +299,13 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
           $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($target->getPlayer()->getName()) . "/player.yaml", Config::YAML);
           $this->plugin->deco->set("gamemode", "spectator");
           $this->plugin->deco->save();
+
+          $target = $this->plugin->getServer()->getPlayer($args[0]);
+          $cfgt = new Config($this->plugin->getDataFolder()."players/". strtolower($target->getPlayer()->getName()) . "/player.yaml", Config::YAML);
+          $cfgt->set("fly", false);
+          $cfgt->set("godmode", false);
+          $cfgt->save();
+
           foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
               if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
                 if($sender !== $p){
@@ -289,6 +330,11 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
           $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($sender->getPlayer()->getName()) . "/player.yaml", Config::YAML);
           $this->plugin->deco->set("gamemode", "spectator");
           $this->plugin->deco->save();
+          $cfgs = new Config($this->plugin->getDataFolder()."players/". strtolower($sender->getName()) . "/player.yaml", Config::YAML);
+          $cfgs->set("fly", false);
+          $cfgs->set("godmode", false);
+          $cfgs->save();
+
           foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
             if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
               if($sender !== $p){
@@ -311,6 +357,13 @@ public $gm = array("0", "survival", "1", "creative", "2", "spectator");
         $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($target->getPlayer()->getName()) . "/player.yaml", Config::YAML);
         $this->plugin->deco->set("gamemode", "spectator");
         $this->plugin->deco->save();
+
+        $target = $this->plugin->getServer()->getPlayer($args[0]);
+        $cfgt = new Config($this->plugin->getDataFolder()."players/". strtolower($target->getPlayer()->getName()) . "/player.yaml", Config::YAML);
+        $cfgt->set("fly", false);
+        $cfgt->set("godmode", false);
+        $cfgt->save();
+
           foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
             if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
               if($sender !== $p){
