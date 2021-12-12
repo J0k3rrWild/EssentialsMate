@@ -20,6 +20,7 @@ use J0k3rrWild\EssentialsMate\Main;
 
 class Adminfo extends PluginCommand implements CommandExecutor{
 
+public $vanishlowstr;
 public $plugin;
 public $vanish;
   
@@ -34,12 +35,17 @@ public $vanish;
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool {
       if($sender->hasPermission("essentials.adminfo") || $sender->hasPermission("essentials.admin")){
         if(!isset($args[0])) return false;
+
         if(!file_exists($this->plugin->getDataFolder()."players/". strtolower($args[0]) . "/player.yaml")){
            $sender->sendMessage(TF::RED."[MeetMate] > Gracz ".$args[0]." nie istnieje w bazie danych");
            return true;
         }
         $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($args[0]) . "/player.yaml", Config::YAML);
         
+        $cfg = $this->plugin->getDataFolder() . 'vanished.json';
+        $json = file_get_contents($cfg);
+        $this->plugin->vanished = json_decode($json, true);
+
         $vanished = $this->plugin->vanished;
 
         $target = $this->plugin->getServer()->getPlayer($args[0]);
@@ -47,10 +53,12 @@ public $vanish;
         $privStatus = $this->plugin->deco->get("priv-disabled");
         $godStatus = $this->plugin->deco->get("godmode");
         $name = strtolower($args[0]);
-        if($vanished === NULL){
-            $vanished = array("nobodyishere7987897987987987");
-        }
 
+        if(count($vanished) === 0){
+            $this->vanishlowstr = array("nobodyishere7987897987987987", "nobodysdfsafsdfsdf");
+            
+        }
+       
 
         if($target){
             $status = TF::GREEN."Online";
@@ -81,14 +89,17 @@ public $vanish;
         }else{
             $flyStatus = TF::GREEN."Włączone";
         }
+
         foreach($vanished as $player){
-        if((strtolower($name) === strtolower($player))){
+         $this->vanishlowstr = array(strtolower($player));
+         var_dump($this->vanishlowstr);
+        }
+
+        if(in_array($name, $this->vanishlowstr)){
             $this->vanish = TF::GREEN."Włączone";
-            break;
         }else{
             $this->vanish = TF::RED."Wyłączone";
             
-        }
         }
 
         $gamemodeStatus = $this->plugin->deco->get("gamemode");
