@@ -76,7 +76,7 @@ public $spawn;
              $target->teleport($tp);
              $target->getLevel()->addSound(new $sound($target));
 
-             $sender->sendMessage(TF::GREEN."[MeetMate] > Teleportowano na spawn gracza ".$target);
+             $sender->sendMessage(TF::GREEN."[MeetMate] > Teleportowano na spawn gracza ".$target->getName());
              $target->sendMessage(TF::GREEN."[MeetMate] > Teleportowano na spawn");
          }
         }
