@@ -26,7 +26,7 @@ public $plugin;
   
     public function __construct(Main $main) {
         parent::__construct("kick", $main);
-        $this->setUsage("/kick <player> <powód>");
+        $this->setUsage("/kick all <powod> | <player> <powod>");
         $this->setDescription("Wyrzuca gracza z serwera");
         $this->plugin = $main;
     }
@@ -41,10 +41,38 @@ public $plugin;
         if(!isset($args[0])) return false;
 
        if($sender->hasPermission("essentials.admin") || $sender->hasPermission("essentials.kick")){
+        
+
+        if(strtolower($args[0]) === "all"){
+            $name = array_shift($args);
+            $reason = implode(" ", $args);
+            $target = $this->plugin->getServer()->getPlayer($name);
+            if($sender->hasPermission("essentials.kick.all") || $sender->hasPermission("essentials.admin")){
+               $players =  $this->plugin->getServer()->getOnlinePlayers();
+                $i = 0;
+                foreach($players as $p){
+                 if(!($p->hasPermission("essentials.kick.bypass")) || !($p->hasPermission("essentials.admin"))){
+                     $i++;
+                    $p->kick($reason !== "" ? TF::RED."§l[MeetMate] > Wszyscy gracze zostali wyrzuceni z serwera. Powód: ". $reason : TF::RED."§l[MeetMate] > Wszyscy gracze zostali wyrzuceni z serwera. Powód: Nie określono", false);
+                 }
+                }
+                $sender->sendMessage(TF::GREEN."[MeetMate] > Wyrzuciłeś ".$i." graczy z serwera");
+                foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
+                    if($p->hasPermission("essentials.admin") || $p->hasPermission("essentials.logger")){
+                        if($sender !== $p){
+                        $p->sendMessage(TF::GRAY."[{$sender->getName()}: Wyrzucono WSZYSTKICH graczy z serwera. Powód: {$reason}]");
+                        }
+                       }
+                       $this->plugin->getLogger()->info(TF::GRAY."[{$sender->getName()}: Wyrzucono WSZYSTKICH graczy z serwera. Powód: {$reason}]");
+                   }
+            }else{
+                $sender->sendMessage(TF::RED."[MeetMate] > Nie posiadasz uprawnień by móc użyć tej komendy");
+            }
+            return true;
+        }
         $name = array_shift($args);
         $reason = implode(" ", $args);
         $target = $this->plugin->getServer()->getPlayer($name);
-
         
         if(!$target){
           $sender->sendMessage(TF::RED."[MeetMate] > Niepoprawny nick lub gracz jest offline");
