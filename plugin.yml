@@ -55,7 +55,7 @@ commands:
  kick:
   description: Wyrzuca gracza z serwera
   permission: essentials.command.kick
-  usage: /kick <player> <powod> 
+  usage: /kick all <powod> | <player> <powod> 
  adminfo:
   description: Wyświetla informacje administratorskie
   permission: essentials.command.adminfo
@@ -176,6 +176,9 @@ permissions:
   essentials.kick:
     default: op
     description: Umożliwa wyrzucenie gracza z serwera
+  essentials.kick.all:
+    default: op
+    description: Umożliwa wyrzucenie wszystkich graczy z serwera
   essentials.kick.bypass:
     default: op
     description: Uniemożliwia wyrzucenie danego gracza
