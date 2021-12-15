@@ -46,7 +46,11 @@ public $plugin;
             $sender->sendMessage(TF::RED."[MeetMate] > Nie możesz odbanować samego siebie!");
             return true;
         }
-
+        
+        $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($args[0]) . "/player.yaml", Config::YAML);
+        $this->plugin->deco->set("banned", false);
+        $this->plugin->deco->set("reasonban", NULL);
+        $this->plugin->deco->save();
         $sender->getServer()->getNameBans()->remove($args[0]);
        
         foreach($this->plugin->getServer()->getOnlinePlayers() as $p){
