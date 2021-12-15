@@ -68,6 +68,10 @@ commands:
   description: Ustawia spawn główny
   permission: essentials.command.setspawn
   usage: /setspawn
+ stop:
+  description: Wyłącza awaryjnie serwer
+  permission: essentials.command.stop
+  usage: /stop
 #Gamemode and aliases ------------------------ 
  gamemode:
   description: Zmienia gamemode gracza
