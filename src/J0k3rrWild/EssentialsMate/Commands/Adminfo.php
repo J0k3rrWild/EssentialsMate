@@ -52,6 +52,8 @@ public $vanish;
         $mutedStatus = $this->plugin->deco->get("muted");
         $privStatus = $this->plugin->deco->get("priv-disabled");
         $godStatus = $this->plugin->deco->get("godmode");
+        $bannedStatus = $this->plugin->deco->get("banned");
+        $bannedReason = $this->plugin->deco->get("reasonban");
         $name = strtolower($args[0]);
 
         if(count($vanished) === 0){
@@ -70,6 +72,13 @@ public $vanish;
             $mutedStatus = TF::RED."False";
         }else{
             $mutedStatus = TF::GREEN."True";
+        }
+
+        if($bannedStatus === false){
+            $bannedStatus = TF::RED."False";
+            $bannedReason = TF::GREEN."N/A";
+        }else{
+            $bannedStatus = TF::GREEN."True";
         }
         
         if($privStatus === false){
@@ -92,7 +101,6 @@ public $vanish;
 
         foreach($vanished as $player){
          $this->vanishlowstr = array(strtolower($player));
-         var_dump($this->vanishlowstr);
         }
 
         if(in_array($name, $this->vanishlowstr)){
@@ -104,7 +112,7 @@ public $vanish;
 
         $gamemodeStatus = $this->plugin->deco->get("gamemode");
 
-        $sender->sendMessage(TF::GREEN."[MeetMate] > Informacje Administratorskie\n\n§2Muted: {$mutedStatus}\n§2Privs: {$privStatus}\n§2God: {$godStatus}\n§2Fly: {$flyStatus}\n§2Vanish: {$this->vanish}\n§2Gamemode: §6{$gamemodeStatus}\n§2Status: {$status}");
+        $sender->sendMessage(TF::GREEN."[MeetMate] > Informacje Administratorskie\n\n§2Muted: {$mutedStatus}\n§2Privs: {$privStatus}\n§2God: {$godStatus}\n§2Fly: {$flyStatus}\n§2Vanish: {$this->vanish}\n§2Gamemode: §6{$gamemodeStatus}\n§2Banned: {$bannedStatus}\n§2Reason: §4{$bannedReason}\n§2Status: {$status}");
 
       }
     
