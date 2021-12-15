@@ -21,6 +21,7 @@ use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\player\PlayerExhaustEvent;
+use pocketmine\event\player\PlayerPreLoginEvent;
 
 //Command use
 use J0k3rrWild\EssentialsMate\Commands\Mute;
@@ -39,6 +40,7 @@ use J0k3rrWild\EssentialsMate\Commands\Op;
 use J0k3rrWild\EssentialsMate\Commands\Deop;
 use J0k3rrWild\EssentialsMate\Commands\Kick;
 use J0k3rrWild\EssentialsMate\Commands\Spawn;
+use J0k3rrWild\EssentialsMate\Commands\Stop;
 
 class Main extends PluginBase implements Listener{
 
@@ -46,7 +48,7 @@ public $spawn;
 public $vanished;
 public $deco;
 public $msg = array("/msg","/tell", "/w");
-public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "op", "deop", "kick");
+public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "op", "deop", "kick", "stop");
 
 
 
@@ -78,6 +80,7 @@ public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "
         $commandMap->register("op", new Commands\Op($this));
         $commandMap->register("deop", new Commands\Deop($this));
         $commandMap->register("kick", new Commands\Kick($this));
+        $commandMap->register("stop", new Commands\Stop($this));
     
         
     
@@ -99,6 +102,7 @@ public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "
         $this->getCommand("adminfo")->setExecutor(new Commands\Adminfo($this));
         $this->getCommand("spawn")->setExecutor(new Commands\Spawn($this));
         $this->getCommand("setspawn")->setExecutor(new Commands\Spawn($this));
+        $this->getCommand("stop")->setExecutor(new Commands\Stop($this));
 
         //Gamemode command alliases & register
         $this->getCommand("gamemode")->setExecutor(new Commands\Gamemode($this));
@@ -224,7 +228,7 @@ public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "
 
             @mkdir($this->getDataFolder()."players/".strtolower($p->getPlayer()->getName()));
             $playerData = fopen($this->getDataFolder()."players/".strtolower($p->getPlayer()->getName())."/player.yaml", "w");
-            $data = "muted: false\nfreezed: false\npriv-disabled: false\ngodmode: false\nfly: false\ngamemode: survival";
+            $data = "muted: false\nfreezed: false\npriv-disabled: false\ngodmode: false\nfly: false\ngamemode: survival\nbanned: false\nreasonban: NULL";
             fwrite($playerData, $data);
             fclose($playerData);
             $this->deco = new Config($this->getDataFolder()."players/". strtolower($p->getPlayer()->getName()) . "/player.yaml", Config::YAML);
@@ -249,5 +253,17 @@ public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "
          }
         
      }
+     
+     public function onBanned(PlayerPreLoginEvent $p){
+      if(is_file($this->getDataFolder()."players/".strtolower($p->getPlayer()->getName())."/player.yaml")){
+       $this->deco = new Config($this->getDataFolder()."players/". strtolower($p->getPlayer()->getName()) . "/player.yaml", Config::YAML); 
+       if($this->deco->get("banned") === true){
+            $reason = $this->deco->get("reasonban");
+            $p->getPlayer()->kick(TF::RED."[MeetMate] > Jesteś zbanowany na naszym serwerze. Powód: {$reason}");
+            
+            
+        }
+      }
+    }
 
 }
