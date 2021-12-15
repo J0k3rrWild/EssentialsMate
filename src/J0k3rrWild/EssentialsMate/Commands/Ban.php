@@ -43,6 +43,7 @@ public $plugin;
        if($sender->hasPermission("essentials.admin") || $sender->hasPermission("essentials.ban")){
         $name = array_shift($args);
         $reason = implode(" ", $args);
+        $reasonc = implode(" ", $args);
         $target = $this->plugin->getServer()->getPlayer($name);
 
         if(strtolower($name) === strtolower($sender->getName())){
@@ -64,6 +65,13 @@ public $plugin;
             }
         }
         $sender->getServer()->getNameBans()->addBan($name, $reason, null, $sender->getName());
+        $this->plugin->deco = new Config($this->plugin->getDataFolder()."players/". strtolower($name) . "/player.yaml", Config::YAML);
+        $this->plugin->deco->set("banned", true);
+        if($reasonc === ""){
+            $reasonc = "Nie określono";
+        }
+        $this->plugin->deco->set("reasonban", $reasonc);
+        $this->plugin->deco->save();
         $sender->sendMessage(TF::GREEN."[MeetMate] > Zbanowano gracza {$name} pernamentnie]");
         $this->plugin->getLogger()->info(TF::GRAY."[{$sender->getName()}: Zbanowano gracza {$name} pernamentnie. Powód: {$reason}]");
 
