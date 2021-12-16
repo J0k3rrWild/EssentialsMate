@@ -41,6 +41,7 @@ use J0k3rrWild\EssentialsMate\Commands\Deop;
 use J0k3rrWild\EssentialsMate\Commands\Kick;
 use J0k3rrWild\EssentialsMate\Commands\Spawn;
 use J0k3rrWild\EssentialsMate\Commands\Stop;
+use J0k3rrWild\EssentialsMate\Commands\Reload;
 
 class Main extends PluginBase implements Listener{
 
@@ -48,7 +49,7 @@ public $spawn;
 public $vanished;
 public $deco;
 public $msg = array("/msg","/tell", "/w");
-public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "op", "deop", "kick", "stop");
+public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "op", "deop", "kick", "stop", "reload");
 
 
 
@@ -81,6 +82,7 @@ public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "
         $commandMap->register("deop", new Commands\Deop($this));
         $commandMap->register("kick", new Commands\Kick($this));
         $commandMap->register("stop", new Commands\Stop($this));
+        $commandMap->register("reload", new Commands\Reload($this));
     
         
     
@@ -103,6 +105,7 @@ public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "
         $this->getCommand("spawn")->setExecutor(new Commands\Spawn($this));
         $this->getCommand("setspawn")->setExecutor(new Commands\Spawn($this));
         $this->getCommand("stop")->setExecutor(new Commands\Stop($this));
+        $this->getCommand("reload")->setExecutor(new Commands\Reload($this));
 
         //Gamemode command alliases & register
         $this->getCommand("gamemode")->setExecutor(new Commands\Gamemode($this));
