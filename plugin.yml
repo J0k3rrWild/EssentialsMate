@@ -72,6 +72,10 @@ commands:
   description: Wyłącza awaryjnie serwer
   permission: essentials.command.stop
   usage: /stop
+ reload:
+  description: Przeładowywuje serwer
+  permission: essentials.command.stop
+  usage: /reload
 #Gamemode and aliases ------------------------ 
  gamemode:
   description: Zmienia gamemode gracza
