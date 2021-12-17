@@ -1,6 +1,6 @@
 ---
 name: EssentialsMate
-version: 0.0.1
+version: 1.1.6
 main: J0k3rrWild\EssentialsMate\Main
 api: 3.26.2
 webiste: https://github.com/J0k3rrWild/
@@ -43,7 +43,12 @@ commands:
  ban:
   description: Umożliwia banowanie graczy
   permission: essentials.command.ban
-  usage: /ban <player> <powod> 
+  usage: /ban <player> <powod>*
+ ban-ip:
+  description: Umożliwia banowanie graczy na IP
+  permission: essentials.command.banip
+  usage: /banip <player> <powod>* 
+  aliases: ["banip"]
  op:
   description: Umożliwia nadanie operatora
   permission: essentials.command.op
@@ -177,7 +182,7 @@ permissions:
     description: Sprawia że inny gracz moze dostać umiejętność latania
   essentials.ban:
     default: op
-    description: Sprawia że inny gracz moze dostać umiejętność latania
+    description: Umożliwia zbanowanie gracza
   essentials.ban.bypass:
     default: op
     description: Uniemożliwia zbanowanie danego gracza
@@ -199,6 +204,12 @@ permissions:
   essentials.setspawn:
     default: op
     description: Ustawia spawn główny
+  essentials.banip:
+    default: op
+    description: możliwia zbanowanie gracza na IP
+  essentials.banip.bypass:
+    default: op
+    description: Uniemożliwia zbanowanie danego gracza na IP
 
 ...
 
