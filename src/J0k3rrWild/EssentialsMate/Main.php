@@ -42,6 +42,7 @@ use J0k3rrWild\EssentialsMate\Commands\Kick;
 use J0k3rrWild\EssentialsMate\Commands\Spawn;
 use J0k3rrWild\EssentialsMate\Commands\Stop;
 use J0k3rrWild\EssentialsMate\Commands\Reload;
+use J0k3rrWild\EssentialsMate\Commands\BanIP;
 
 class Main extends PluginBase implements Listener{
 
@@ -49,7 +50,7 @@ public $spawn;
 public $vanished;
 public $deco;
 public $msg = array("/msg","/tell", "/w");
-public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "op", "deop", "kick", "stop", "reload");
+public $unregister = array("tell", "ban", "ban-ip", "unban", "pardon", "gamemode", "gm", "op", "deop", "kick", "stop", "reload");
 
 
 
@@ -83,6 +84,7 @@ public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "
         $commandMap->register("kick", new Commands\Kick($this));
         $commandMap->register("stop", new Commands\Stop($this));
         $commandMap->register("reload", new Commands\Reload($this));
+        $commandMap->register("ban-ip", new Commands\BanIP($this));
     
         
     
@@ -107,6 +109,10 @@ public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "
         $this->getCommand("stop")->setExecutor(new Commands\Stop($this));
         $this->getCommand("reload")->setExecutor(new Commands\Reload($this));
 
+        //BanIP command and alliases
+        $this->getCommand("ban-ip")->setExecutor(new Commands\BanIP($this));
+        $this->getCommand("banip")->setExecutor(new Commands\BanIP($this));
+
         //Gamemode command alliases & register
         $this->getCommand("gamemode")->setExecutor(new Commands\Gamemode($this));
         $this->getCommand("gmc")->setExecutor(new Commands\Gamemode($this));
@@ -125,10 +131,10 @@ public $unregister = array("tell", "ban", "unban", "pardon", "gamemode", "gm", "
         
 // --------------------------------------------------------------------------------------
 
-
         $this->getLogger()->info(TF::GREEN."[EssentialsMate] > Plugin oraz konfiguracja została załadowana pomyślnie");
     }
     
+
     public function getVanish() { 
         return new Vanish($this);
       }
