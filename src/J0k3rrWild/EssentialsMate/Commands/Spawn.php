@@ -13,7 +13,11 @@ use pocketmine\command\PluginCommand;
 use pocketmine\Player;
 use pocketmine\utils\Config;
 use pocketmine\level\Position;
-
+use pocketmine\scheduler\Task;
+use pocketmine\scheduler\TaskScheduler;
+use J0k3rrWild\EssentialsMate\Commands\Tasks\Spawn\SpawnSchelud;
+use pocketmine\entity\Effect;
+use pocketmine\entity\EffectInstance;
 
 
 //Main
@@ -49,19 +53,21 @@ public $spawn;
           $getZ = $this->spawn->get("getZ");
           $getWorld = $this->spawn->get("world");
          if($getX === False){
-             $sender->sendMessage(TF::RED."[MeetMate] > Spawn nie został ustawiony");
+             $sender->sendMessage(TF::RED."[MeetMate] > Spawn nie został ustawiony lub jest wyłączony");
              return true;
         
          }
- 
-
-        $tp = new Position($getX, $getY, $getZ, $this->plugin->getServer()->getLevelByName($getWorld));
-        $sender->sendMessage(TF::GREEN."[MeetMate] > Zostaniesz teleportowany za 5 sekund");
-        sleep(5);
-        $sender->teleport($tp);
-        $sender->getLevel()->addSound(new $sound($sender));
-        $sender->sendMessage(TF::GREEN."[MeetMate] > Teleportowano na spawn");
-
+            
+            $instanceEff = new EffectInstance(Effect::getEffect(9));
+            $sender->addEffect($instanceEff->setDuration(5*20));
+            
+            
+            
+            $sender->sendMessage(TF::GREEN."[MeetMate] > Zostaniesz teleportowany za 5 sekund");
+            $task = new SpawnSchelud($this, $sender); 
+            $this->plugin->getScheduler()->scheduleDelayedTask($task,5*20); // Counted in ticks (1 second = 20 ticks)
+        
+        
     }else{
         if($sender->hasPermission("essentials.spawn.other") || $sender->hasPermission("essentials.admin")){
            
