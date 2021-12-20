@@ -108,6 +108,7 @@ public $unregister = array("tell", "ban", "ban-ip", "unban", "pardon", "gamemode
         $this->getCommand("setspawn")->setExecutor(new Commands\Spawn($this));
         $this->getCommand("stop")->setExecutor(new Commands\Stop($this));
         $this->getCommand("reload")->setExecutor(new Commands\Reload($this));
+        $this->getCommand("essentials")->setExecutor(new Commands\Essentials($this));
 
         //BanIP command and alliases
         $this->getCommand("ban-ip")->setExecutor(new Commands\BanIP($this));
