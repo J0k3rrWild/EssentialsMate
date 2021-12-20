@@ -1,12 +1,15 @@
 ---
 name: EssentialsMate
-version: 1.1.6
+version: 1.1.8
 main: J0k3rrWild\EssentialsMate\Main
 api: 3.26.2
 webiste: https://github.com/J0k3rrWild/
 author: J0k3rrWild
 load: POSTWORLD
 commands:
+ essentials:
+  description: Pokazuje informacje o pluginie oraz komendy
+  usage: /essentials help*
  mute:
   description: Mutuje gracza w grze
   permission: essentials.command.mute
