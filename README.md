@@ -1,9 +1,8 @@
 # EssentialsMate
 
-TODO:
-
 Advanced administration and server security plugin for pocketmine (API 3.26.2) 
 
+TODO:
 
 
 * Make documentation
