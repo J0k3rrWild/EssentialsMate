@@ -1,6 +1,6 @@
 # EssentialsMate
 
-Because old essentials are outdated and lack of functionality
+Because old essentials are outdated and lack of functionality, I made my own.
 
 Advanced and very usable administration and server security plugin for pocketmine (API 3.26.2) 
 
